@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Acharii",
+  title: "acharii",
   description: "Authentic Pakistani flavors, handcrafted with bold spices and rich tradition.",
 };
 

@@ -1,12 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { products } from "./productList";
 import { CartItem, Product } from "../types";
+import axios from "axios";
 
 export default function Products() {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch products
+  useEffect(() => {
+    axios.post("/api/get-products").then(response => {
+      setProducts(response.data);
+      setLoading(false);
+    });
+  }, []);
+
+  // Load cart from local storage
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
