@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Product } from "../products/productList";
+import { CartItem } from "../types";
 
 export default function Cart() {
-  const [cart, setCart] = useState<Product[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
@@ -13,19 +13,45 @@ export default function Cart() {
     }
   }, []);
 
+  const handleDelete = (index: number) => {
+    const newCart = [...cart];
+    newCart.splice(index, 1);
+    setCart(newCart);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
+
+  const handleCheckout = () => {
+    // Add your checkout logic here
+    alert("Proceeding to checkout!");
+  };
+
   return (
     <main className="flex flex-col gap-8">
       <h1 className="text-6xl">Cart</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {cart.map((product, index) => (
+        {cart.map((item, index) => (
           <div key={index} className="border p-4 rounded shadow">
-            <h2 className="text-2xl font-bold">{product.name}</h2>
-            <p className="text-lg">{product.size}</p>
-            <p>{product.description}</p>
-            <p className="text-xl font-semibold">${product.price.toFixed(2)}</p>
+            <h2 className="text-2xl font-bold">{item.name}</h2>
+            <p className="text-lg">{item.size}</p>
+            <p>{item.description}</p>
+            <p className="text-xl font-semibold">${item.price.toFixed(2)}</p>
+            <p className="text-lg">Quantity: {item.quantity}</p>
+            <button
+              onClick={() => handleDelete(index)}
+              className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
+      <button
+        onClick={handleCheckout}
+        className="mt-8 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+        disabled={cart.length === 0}
+      >
+        Checkout
+      </button>
     </main>
   );
 }

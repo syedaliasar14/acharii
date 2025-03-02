@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Product, products } from "./productList";
+import { products } from "./productList";
+import { CartItem, Product } from "../types";
 
 export default function Products() {
-  const [cart, setCart] = useState<Product[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
@@ -14,7 +15,19 @@ export default function Products() {
   }, []);
 
   const addToCart = (product: Product) => {
-    const updatedCart = [...cart, product];
+    const existingProductIndex = cart.findIndex(item => item.id === product.id);
+    let updatedCart;
+
+    if (existingProductIndex >= 0) {
+      updatedCart = cart.map((item, index) =>
+        index === existingProductIndex
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+    } else {
+      updatedCart = [...cart, { ...product, quantity: 1 } as CartItem];
+    }
+
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     console.log(`Added ${product.name} to cart`);
@@ -32,7 +45,7 @@ export default function Products() {
             <p className="text-xl font-semibold">${product.price.toFixed(2)}</p>
             <button
               onClick={() => addToCart(product)}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
             >
               Add to Cart
             </button>
