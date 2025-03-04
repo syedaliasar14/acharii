@@ -11,7 +11,6 @@ export async function POST(req: NextRequest) {
   try {
     const products = await stripe.products.list();
     const mappedProducts = await Promise.all(products.data.map(p => mapStripeProducts(p)));
-    console.log(mappedProducts);
     return NextResponse.json(mappedProducts);
   } catch (error) {
     console.error('Error fetching products:', error);

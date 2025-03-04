@@ -41,7 +41,7 @@ export default function Products() {
 
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-    console.log(`Added ${product.name} to cart`);
+    alert(`Added to Cart! \n${product.name}`);
   };
 
   return (

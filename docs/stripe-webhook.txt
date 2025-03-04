@@ -1,0 +1,8 @@
+stripe login
+
+(new terminal for forwarding requests)
+stripe listen --forward-to localhost:3000/api/webhook/stripe
+
+(new terminal triggering stripe events)
+stripe trigger checkout.session.completed
+stripe trigger ...
