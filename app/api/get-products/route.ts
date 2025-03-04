@@ -7,19 +7,28 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   typescript: true,
 });
 
-const mapStripeProducts = (stripeProduct: Stripe.Product): Product => {
+export async function POST(req: NextRequest) {
+  try {
+    const products = await stripe.products.list();
+    const mappedProducts = await Promise.all(products.data.map(p => mapStripeProducts(p)));
+    console.log(mappedProducts);
+    return NextResponse.json(mappedProducts);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 });
+  }
+}
+
+async function mapStripeProducts (stripeProduct: Stripe.Product): Promise<Product> {
+  const price = await stripe.prices.list({ product: stripeProduct.id });
+
   return {
     id: stripeProduct.id,
     name: stripeProduct.name,
     size: stripeProduct.metadata.size || '',
     description: stripeProduct.description || '',
-    price: stripeProduct.metadata.price ? parseFloat(stripeProduct.metadata.price) : 0,
+    price: (price?.data[0]?.unit_amount || 0) / 100,
+    priceId: price?.data[0]?.id || '',
     image: stripeProduct.images[0] || '',
   };
 };
-
-export async function POST(req: NextRequest) {
-  const products = await stripe.products.list();
-  const mappedProducts = products.data.map(mapStripeProducts);
-  return NextResponse.json(mappedProducts);
-}

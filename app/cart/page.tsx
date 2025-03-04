@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { CartItem } from "../types";
+import axios from "axios";
 
 export default function Cart() {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
@@ -20,9 +22,21 @@ export default function Cart() {
     localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
-  const handleCheckout = () => {
-    // Add your checkout logic here
-    alert("Proceeding to checkout!");
+  const handleCheckout = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.post("/api/create-checkout", {
+        cart,
+        successUrl: `${window.location.origin}/`,
+        cancelUrl: `${window.location.origin}/cart`,
+      });
+      window.location.href = res.data.url;
+    } catch (error) {
+      console.error("Checkout failed:", error);
+      alert("An error occurred during checkout. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
