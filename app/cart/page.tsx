@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { CartItem } from "../types";
 import axios from "axios";
+import ProductCard from "../components/ProductCard";
+import Link from "next/link";
 
 export default function Cart() {
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -41,31 +43,49 @@ export default function Cart() {
 
   return (
     <main className="flex flex-col gap-8">
-      <h1 className="text-6xl">Cart</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {cart.map((item, index) => (
-          <div key={index} className="border p-4 rounded shadow">
-            <h2 className="text-2xl font-bold">{item.name}</h2>
-            <p className="text-lg">{item.size}</p>
-            <p>{item.description}</p>
-            <p className="text-xl font-semibold">${item.price.toFixed(2)}</p>
-            <p className="text-lg">Quantity: {item.quantity}</p>
-            <button
-              onClick={() => handleDelete(index)}
-              className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
-            >
-              Delete
-            </button>
+      <h1 className="text-5xl md:text-6xl">Cart</h1>
+      <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col w-full md:w-1/3 gap-8 md:h-[calc(100vh-20rem)] overflow-y-auto md:px-8 md:py-2 items-center">
+          {cart.length === 0 && (
+            <div className="flex flex-col items-center mt-4 w-full gap-4">
+              <p className="text-lg opacity-70">looks like your cart is empty</p>
+              <Link href="/products"
+                className="w-full mt-4 px-4 py-2 flex justify-center rounded-md cursor-pointer transition-colors shadow-sm bg-secondary/80 hover:bg-secondary">
+                  + add to cart
+              </Link>
+            </div>
+          )}
+          {cart.map((item, index) => (
+            <ProductCard key={index} product={item} type="cart" onClick={() => handleDelete(index)} />
+          ))}
+        </div>
+
+        <div className="w-full md:w-2/3 flex flex-col gap-8 items-stretch items-center self-stretch md:px-20 lowercase">
+          <div className="flex flex-col justify-between items-center p-4 bg-stone-200">
+            <div className="flex flex-col w-full">
+              {cart.map((item, index) => (
+                <div key={index} className="flex justify-between items-center p-2 border-b border-stone-300">
+                  <span className="mr-2">{item.quantity}x {item.name}</span>
+                  <span>${(item.price * item.quantity).toFixed(2)}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-between self-stretch items-center mt-4 p-2">
+              <h2 className="text-2xl">Subtotal</h2>
+              <p className="text-2xl">${cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</p>
+            </div>
           </div>
-        ))}
+
+          <button
+            onClick={handleCheckout}
+            className={`px-4 py-2 rounded-md transition-colors shadow-sm
+            ${cart.length === 0 ? "bg-stone-300 opacity-80 cursor-default" : "bg-secondary/80 hover:bg-secondary cursor-pointer"}`}
+            disabled={cart.length === 0}
+          >
+            checkout
+          </button>
+        </div>
       </div>
-      <button
-        onClick={handleCheckout}
-        className="mt-8 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        disabled={cart.length === 0}
-      >
-        Checkout
-      </button>
-    </main>
+    </main >
   );
 }

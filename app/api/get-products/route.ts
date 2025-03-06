@@ -9,7 +9,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 
 export async function POST(req: NextRequest) {
   try {
-    const products = await stripe.products.list();
+    const products = await stripe.products.list({ active: true });
+    products.data.sort((a, b) => (a.created < b.created ? -1 : 1));
     const mappedProducts = await Promise.all(products.data.map(p => mapStripeProducts(p)));
     return NextResponse.json(mappedProducts);
   } catch (error) {
@@ -19,7 +20,7 @@ export async function POST(req: NextRequest) {
 }
 
 async function mapStripeProducts (stripeProduct: Stripe.Product): Promise<Product> {
-  const price = await stripe.prices.list({ product: stripeProduct.id });
+  const price = await stripe.prices.list({ product: stripeProduct.id});
 
   return {
     id: stripeProduct.id,
