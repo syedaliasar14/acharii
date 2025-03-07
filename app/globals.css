@@ -17,3 +17,7 @@ body {
   background: var(--background);
   font-family: Lora, Arial, Helvetica, sans-serif;
 }
+
+.input {
+  @apply p-2 border border-stone-300 focus:outline-none focus:bg-secondary/10;
+}
