@@ -1,11 +1,11 @@
 import { NextResponse, NextRequest } from "next/server";
 import { headers } from "next/headers";
+import stripe from "@/lib/stripe";
 import Stripe from "stripe";
+import { sendEmail } from "@/utils/sendEmail";
+import connectMongo from "@/lib/mongoose";
+import Order from "@/models/Order";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: '2025-02-24.acacia',
-  typescript: true,
-});
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
 export async function POST(req: NextRequest) {
@@ -30,8 +30,18 @@ export async function POST(req: NextRequest) {
         console.log(`Stripe Object: ${JSON.stringify(stripeObject)}`);
         console.log(`Payment for order ${orderId} received from ${customerEmail}`);
 
-        // Send a confirmation email
-        // await sendOrderConfirmationEmail(order);
+        // Send order confirmation email
+        await sendEmail(customerEmail, "Order Confirmation", "Thank you for purchasing acharii!");
+
+        // Add order to database
+        await connectMongo();
+        await Order.create({
+          customerName: stripeObject.customer_details?.name,
+          email: customerEmail,
+          items: stripeObject.line_items,
+          totalAmount: stripeObject.amount_total,
+          status: "pending",
+        });
 
         break;
       }
@@ -39,7 +49,7 @@ export async function POST(req: NextRequest) {
       // Handle other event types as needed
 
       default:
-        // Unexpected event type
+      // Unexpected event type
     }
   } catch (error) {
     console.error('Stripe Webhook Error:', error);

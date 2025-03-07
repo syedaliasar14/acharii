@@ -1,11 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Stripe from 'stripe';
 import { Product } from '../../types';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: '2025-02-24.acacia',
-  typescript: true,
-});
+import stripe from '@/lib/stripe';
+import Stripe from 'stripe';
 
 export async function POST(req: NextRequest) {
   try {
