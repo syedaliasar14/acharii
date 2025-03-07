@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
       line_items,
       success_url: successUrl,
       cancel_url: cancelUrl,
+      phone_number_collection: { enabled: true },
       metadata,
     });
 

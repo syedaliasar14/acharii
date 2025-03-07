@@ -29,3 +29,20 @@ export interface AddressErrors {
   state: boolean;
   zip: boolean;
 }
+
+export interface Order {
+  _id: string;
+  customerName: string;
+  email: string;
+  phone: string;
+  address: Address;
+  items: {
+    productId: string;
+    name: string;
+    quantity: number;
+    price: number;
+  }[];
+  totalAmount: number;
+  status: string;
+  createdAt: string;
+}

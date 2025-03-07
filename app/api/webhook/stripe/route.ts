@@ -26,6 +26,7 @@ export async function POST(req: NextRequest) {
         const stripeObject: Stripe.Checkout.Session = event.data.object as Stripe.Checkout.Session;
         const customerEmail = stripeObject.customer_details?.email || stripeObject.customer_email || '';
         const customerName = stripeObject.customer_details?.name || '';
+        const customerPhone = stripeObject.customer_details?.phone || '';
         const address = stripeObject.metadata?.address ? JSON.parse(stripeObject.metadata.address) : {};
         const items = stripeObject.metadata?.cart ? JSON.parse(stripeObject.metadata.cart) : [];
 
@@ -41,10 +42,10 @@ export async function POST(req: NextRequest) {
         await Order.create({
           customerName,
           email: customerEmail,
+          phone: customerPhone,
           address,
           items,
           totalAmount: stripeObject.amount_total,
-          status: "pending",
         });
 
         break;
