@@ -25,20 +25,24 @@ export async function POST(req: NextRequest) {
       case "checkout.session.completed": {
         const stripeObject: Stripe.Checkout.Session = event.data.object as Stripe.Checkout.Session;
         const customerEmail = stripeObject.customer_details?.email || stripeObject.customer_email || '';
-        const orderId = stripeObject.client_reference_id;
+        const customerName = stripeObject.customer_details?.name || '';
+        const address = stripeObject.metadata?.address ? JSON.parse(stripeObject.metadata.address) : {};
+        const items = stripeObject.metadata?.cart ? JSON.parse(stripeObject.metadata.cart) : [];
 
         console.log(`Stripe Object: ${JSON.stringify(stripeObject)}`);
-        console.log(`Payment for order ${orderId} received from ${customerEmail}`);
+        console.log(`Payment received from ${customerName} - ${customerEmail}`);
+        console.log(`Shipping address is: ${JSON.stringify(address)}`);
 
         // Send order confirmation email
-        await sendEmail(customerEmail, "Order Confirmation", "Thank you for purchasing acharii!");
+        await sendEmail(customerEmail, "Order Confirmation - acharii", "Thank you for purchasing acharii!");
 
         // Add order to database
         await connectMongo();
         await Order.create({
-          customerName: stripeObject.customer_details?.name,
+          customerName,
           email: customerEmail,
-          items: stripeObject.line_items,
+          address,
+          items,
           totalAmount: stripeObject.amount_total,
           status: "pending",
         });

@@ -4,11 +4,23 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
-    const { cart, successUrl, cancelUrl } = await req.json();
+    const { cart, address, successUrl, cancelUrl } = await req.json();
     const line_items = cart.map((item: CartItem) => ({
       price: item.priceId,
       quantity: item.quantity,
     }));
+
+    const metadata = { 
+      address: JSON.stringify(address),
+      cart: JSON.stringify(
+        cart.map((item: CartItem) => ({
+          productId: item.id,
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price
+        }))
+      ),
+    };
 
     const stripeSession = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -16,6 +28,7 @@ export async function POST(req: NextRequest) {
       line_items,
       success_url: successUrl,
       cancel_url: cancelUrl,
+      metadata,
     });
 
     return NextResponse.json({ url: stripeSession.url });

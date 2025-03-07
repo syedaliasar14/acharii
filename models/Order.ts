@@ -1,9 +1,19 @@
 import mongoose from "mongoose";
 
+const AddressSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  street: { type: String, required: true },
+  street2: { type: String },
+  city: { type: String, required: true },
+  state: { type: String, required: true },
+  zip: { type: String, required: true },
+});
+
 const OrderSchema = new mongoose.Schema(
   {
     customerName: { type: String, required: true },
     email: { type: String, required: true },
+    address: { type: AddressSchema, required: true },
     items: [
       {
         productId: { type: String, required: true },

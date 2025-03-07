@@ -24,7 +24,7 @@ export default function CheckoutButton({ cart, address, setAddressErrors }: { ca
       const res = await axios.post("/api/create-checkout", {
         cart,
         address,
-        successUrl: `${window.location.origin}/`,
+        successUrl: `${window.location.origin}/payment-success`,
         cancelUrl: `${window.location.origin}/cart`,
       });
       window.location.href = res.data.url;
