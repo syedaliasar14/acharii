@@ -22,6 +22,11 @@ export default function ShippingAddress({ address, setAddress, visible, addressE
     setAddressErrors({ ...addressErrors, [name]: false });
   };
 
+  const handleCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setAddress({ ...address, [name]: checked });
+  };
+
   return (
     <div className={`w-full transition-height duration-1500 ease-out overflow-hidden ${isVisible ? 'max-h-full' : 'max-h-0'}`}>
       <h2 className="text-2xl mb-4">Shipping Address</h2>
@@ -77,6 +82,20 @@ export default function ShippingAddress({ address, setAddress, visible, addressE
             className={`input ${addressErrors.zip  && 'bg-primary/20'} w-1/2 rounded-br-lg`}
           />
         </div>
+        {address.state.toUpperCase() === 'CT' && (
+          <div className="mt-4">
+            <label className="flex items-center rounded-md border-2 border-secondary/60 p-2 bg-secondary/10">
+              <input
+                type="checkbox"
+                name="localDelivery"
+                checked={address.localDelivery}
+                onChange={handleCheckChange}
+                className="mr-3 size-4 accent-secondary"
+              />
+              Local delivery/pickup (free)
+            </label>
+          </div>
+        )}
       </form>
     </div>
   );

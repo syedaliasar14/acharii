@@ -7,6 +7,7 @@ const AddressSchema = new mongoose.Schema({
   city: { type: String, required: true },
   state: { type: String, required: true },
   zip: { type: String, required: true },
+  localDelivery: { type: Boolean, default: false },
 });
 
 const OrderSchema = new mongoose.Schema(

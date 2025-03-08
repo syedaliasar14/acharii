@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
         console.log(`Shipping address is: ${JSON.stringify(address)}`);
 
         // Send order confirmation email
-        await sendEmail(customerEmail, "Order Confirmation - acharii", "Thank you for purchasing acharii!");
+        await sendEmail(customerEmail, "Acharii Order Confirmation", "Thank you for purchasing acharii!");
 
         // Add order to database
         await connectMongo();
