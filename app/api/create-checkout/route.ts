@@ -1,16 +1,17 @@
 import { CartItem } from "@/app/types";
 import stripe from "@/lib/stripe";
 import { NextRequest, NextResponse } from "next/server";
+import { getShippingOptions } from "./utils";
 
 export async function POST(req: NextRequest) {
   try {
-    const { cart, address, successUrl, cancelUrl } = await req.json();
+    const { cart, address, shippingCost, successUrl, cancelUrl } = await req.json();
     const line_items = cart.map((item: CartItem) => ({
       price: item.priceId,
       quantity: item.quantity,
     }));
 
-    const metadata = { 
+    const metadata = {
       address: JSON.stringify(address),
       cart: JSON.stringify(
         cart.map((item: CartItem) => ({
@@ -22,6 +23,8 @@ export async function POST(req: NextRequest) {
       ),
     };
 
+    const shipping_options = getShippingOptions(shippingCost, address);
+
     const stripeSession = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
@@ -30,6 +33,7 @@ export async function POST(req: NextRequest) {
       cancel_url: cancelUrl,
       phone_number_collection: { enabled: true },
       metadata,
+      shipping_options,
     });
 
     return NextResponse.json({ url: stripeSession.url });

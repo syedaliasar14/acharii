@@ -21,9 +21,15 @@ export default function CheckoutButton({ cart, address, setAddressErrors }: { ca
 
     setLoading(true);
     try {
+      let shippingCost = 0;
+      if (!address.localDelivery) {
+        shippingCost = (await axios.post("/api/calculate-shipping", { cart, address })).data.shippingCost;
+      }
+
       const res = await axios.post("/api/create-checkout", {
         cart,
         address,
+        shippingCost,
         successUrl: `${window.location.origin}/payment-success`,
         cancelUrl: `${window.location.origin}/cart`,
       });

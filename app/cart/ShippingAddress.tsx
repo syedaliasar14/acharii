@@ -79,18 +79,18 @@ export default function ShippingAddress({ address, setAddress, visible, addressE
             value={address.zip}
             onChange={handleChange}
             placeholder="zip"
-            className={`input ${addressErrors.zip  && 'bg-primary/20'} w-1/2 rounded-br-lg`}
+            className={`input ${addressErrors.zip && 'bg-primary/20'} w-1/2 rounded-br-lg`}
           />
         </div>
         {address.state.toUpperCase() === 'CT' && (
-          <div className="mt-4">
-            <label className="flex items-center rounded-md border-2 border-secondary/60 p-2 bg-secondary/10">
+          <div className="mt-4 flex flex-row items-center rounded-md border-2 border-secondary/60 p-2 gap-3 bg-secondary/10">
+            <label className="flex items-center justify-center">
               <input
                 type="checkbox"
                 name="localDelivery"
                 checked={address.localDelivery}
                 onChange={handleCheckChange}
-                className="mr-3 size-4 accent-secondary"
+                className="mr-2 size-4 accent-secondary"
               />
               Local delivery/pickup (free)
             </label>

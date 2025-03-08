@@ -1,4 +1,4 @@
-import { CartItem } from "@/app/types";
+import { Address, CartItem } from "@/app/types";
 
 const jarWeights: Record<JarSize, number> = {
   "8oz": 1.25,  // lbs
@@ -16,4 +16,11 @@ export function calculateTotalWeight(cart: CartItem[]) {
   });
 
   return totalWeight;
+}
+
+export async function calculateShippingCost(cart: CartItem[], address: Address) {
+  // Simulate shipping cost calculation based on address and cart weight
+  const weight = calculateTotalWeight(cart);
+  const shippingCost = 10; // Example shipping cost calculation
+  return shippingCost.toFixed(2);
 }
