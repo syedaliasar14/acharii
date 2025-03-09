@@ -1,11 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { sendEmail } from "../sendEmail";
-import { fileURLToPath } from "url";
 import { Order } from "@/app/types";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export async function sendPaymentSuccessEmail(to: string, order: Order) {
   const subject = "Acharii Order Confirmation";
@@ -24,7 +20,7 @@ export async function sendPaymentSuccessEmail(to: string, order: Order) {
 
   const attachments = [{
     filename: "logo.svg",
-    path: path.join(__dirname, "logo.svg"),
+    path: path.join(process.cwd(), "utils/email/payment-success/logo.svg"),
     cid: "logo",
   }]
 
