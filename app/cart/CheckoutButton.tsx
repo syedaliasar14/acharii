@@ -45,7 +45,7 @@ export default function CheckoutButton({ cart, address, setAddressErrors }: { ca
   return (
     <button
       onClick={handleCheckout}
-      className={`px-4 py-2 rounded-md transition-colors shadow-sm flex justify-center items-center h-10
+      className={`px-4 py-2 rounded-md transition-colors shadow-sm flex justify-center items-center h-10 active:scale-95 transition-transform
             ${cart.length === 0 ? "bg-stone-300 opacity-80 cursor-default" : "bg-secondary/80 hover:bg-secondary cursor-pointer"}`}
       disabled={cart.length === 0 || loading}
     >

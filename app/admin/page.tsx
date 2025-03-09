@@ -25,7 +25,7 @@ export default function Admin() {
   }, []);
 
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col px-8">
       <h1 className="text-5xl md:text-6xl">Orders</h1>
       {loading && (
         <div className="flex justify-center items-center mt-20">

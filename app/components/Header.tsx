@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between w-full pt-8 px-8">
+    <header className="flex items-center justify-between w-full p-8">
       <Link href="/">
         <Image src="/acharii_text.svg" alt="acharii" width={100} height={100} />
       </Link>

@@ -41,9 +41,9 @@ export default function RootLayout({
       <body
         className={`${lora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="min-h-screen flex flex-col gap-8 items-center">
+        <div className="min-h-screen flex flex-col items-center">
           <Header />
-          <div className="flex-grow w-full px-8 flex flex-col">{children}</div>
+          <div className="flex-grow w-full flex flex-col">{children}</div>
           <Footer />
         </div>
       </body>

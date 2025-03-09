@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { CartItem, Product } from "../types";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Products() {
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -42,11 +44,19 @@ export default function Products() {
 
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-    alert(`Added to Cart! \n${product.name}`);
+    toast.success(`added to cart!`, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+    });
   };
 
   return (
-    <main className="flex flex-col gap-8">
+    <main className="flex flex-col gap-8 px-8 mb-12">
       <h2 className="text-5xl md:text-6xl">Products</h2>
       {loading && (
         <div className="flex justify-center items-center mt-20">
@@ -60,6 +70,7 @@ export default function Products() {
           <ProductCard key={index} product={product} type="product" onClick={() => addToCart(product)} />
         ))}
       </div>
+      <ToastContainer />
     </main>
   );
 }
