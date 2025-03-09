@@ -2,9 +2,9 @@ import { NextResponse, NextRequest } from "next/server";
 import { headers } from "next/headers";
 import stripe from "@/lib/stripe";
 import Stripe from "stripe";
-import { sendEmail } from "@/utils/sendEmail";
 import connectMongo from "@/lib/mongoose";
 import Order from "@/models/Order";
+import { sendPaymentSuccessEmail } from "@/utils/email/payment-success/utils";
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
@@ -34,19 +34,19 @@ export async function POST(req: NextRequest) {
         console.log(`Payment received from ${customerName} - ${customerEmail}`);
         console.log(`Shipping address is: ${JSON.stringify(address)}`);
 
-        // Send order confirmation email
-        await sendEmail(customerEmail, "Acharii Order Confirmation", "Thank you for purchasing acharii!");
-
         // Add order to database
         await connectMongo();
-        await Order.create({
+        const order = await Order.create({
           customerName,
           email: customerEmail,
           phone: customerPhone,
           address,
           items,
-          totalAmount: stripeObject.amount_total,
+          totalAmount: (stripeObject.amount_total || 0) / 100,
         });
+
+        // Send order confirmation email
+        await sendPaymentSuccessEmail(customerEmail, order);
 
         break;
       }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acharii Order Confirmation</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fffbf8;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 150px;
+      margin: 0 auto;
+    }
+
+    .content {
+      color: #271f30;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .footer {
+      color: #999;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="cid:logo" alt="acharii logo" class="logo">
+    </div>
+    <div class="content">
+      <p>Thank you for ordering from acharii! We're thrilled to bring our handcrafted flavors to your home. ✨</p>
+      <p>Here are your order details:
+        <strong>
+          <span style="font-size: small;"><br>{{orders}}</span>
+          <br>Shipping & txn fees: ${{shippingFee}}
+          <br>Total: ${{totalAmount}}
+        </strong>
+      </p>
+      <p>Shipping Details:
+        <br>{{shippingDetails}}
+        <strong><br>{{address}}</strong>
+      </p>
+      <p>
+        <br>We've received your payment of <strong>${{paidAmount}}</strong>.
+      </p>
+      <p>If you have any questions, feel free to contact us or DM us on Instagram <a
+          href="https://www.instagram.com/_acharii_/">@_acharii_</a></p>
+      <p>Thank you for supporting acharii! We can't wait for you to taste homemade flavors crafted just for you. ✨
+      </p>
+    </div>
+    <div class="footer">
+      <p>You're receiving this email because you placed an order at acharii.</p>
+      <p>&copy;
+        <script>document.write(new Date().getFullYear());</script> acharii, all rights reserved.
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

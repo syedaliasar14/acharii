@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-export async function sendEmail(to: string, subject: string, text: string) {
+export async function sendEmail(to: string, subject: string, html: string, bcc?: string, attachments?: any) {
   const transporter = nodemailer.createTransport({
     host: "email-smtp.us-east-1.amazonaws.com",
     port: 465, // or 587 for TLS
@@ -16,7 +16,9 @@ export async function sendEmail(to: string, subject: string, text: string) {
       from: `"acharii" <no-reply@achariimarket.com>`,
       to,
       subject,
-      text,
+      html,
+      bcc,
+      attachments,
     });
 
     return { message: "Email sent successfully!" };
