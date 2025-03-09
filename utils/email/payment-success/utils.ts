@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 export async function sendPaymentSuccessEmail(to: string, order: Order) {
   const subject = "Acharii Order Confirmation";
-  const templatePath = path.join(__dirname, "PaymentSuccessTemplate.html");
+  const templatePath = path.join(process.cwd(), "utils/email/payment-success/PaymentSuccessTemplate.html");
   let html = fs.readFileSync(templatePath, "utf-8");
   const address = order.address;
 
