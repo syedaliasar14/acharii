@@ -4,7 +4,7 @@ import Stripe from "stripe";
 export function getShippingOptions(shippingCost: number, address: Address): Stripe.Checkout.SessionCreateParams.ShippingOption[] {
   const shipping_options: Stripe.Checkout.SessionCreateParams.ShippingOption[] = [];
   
-  if (address.localDelivery) {
+  if (address.pickup) {
     return [{
       shipping_rate_data: {
         type: 'fixed_amount',
@@ -12,7 +12,7 @@ export function getShippingOptions(shippingCost: number, address: Address): Stri
           amount: 0,
           currency: 'usd',
         },
-        display_name: 'Local Delivery/Pickup (CT)',
+        display_name: 'Pickup',
       },
     }]
   } else {

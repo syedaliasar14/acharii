@@ -13,7 +13,7 @@ export async function sendPaymentSuccessEmail(to: string, order: Order) {
   html = html.replace("{{shippingFee}}", getShippingFee(order).toFixed(2));
   html = html.replace("{{totalAmount}}", order.totalAmount.toFixed(2));
   html = html.replace("{{shippingDetails}}", `${
-    address.localDelivery ? "We'll reach out to you for local delivery or pickup." : "Your order will be processed and shipped within 3-5 business days."
+    address.pickup ? "We'll reach out to you for pickup details." : "Your order will be processed and shipped within 3-5 business days."
   }`);
   html = html.replace("{{address}}", `${address.name}<br>${address.street}${address.street2 && `<br>${address.street2}`}<br>${address.city}, ${address.state} ${address.zip}`);
   html = html.replace("{{paidAmount}}", order.totalAmount.toFixed(2));

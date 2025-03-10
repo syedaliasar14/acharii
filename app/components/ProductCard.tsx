@@ -10,8 +10,8 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
             src={product.image}
             alt={product.name}
             objectFit="cover"
-            width={300}
-            height={100}
+            width={500}
+            height={500}
             className="w-full translate-y-[-40%] absolute top-1/2"
           />
         </div>

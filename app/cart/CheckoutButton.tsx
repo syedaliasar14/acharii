@@ -22,7 +22,7 @@ export default function CheckoutButton({ cart, address, setAddressErrors }: { ca
     setLoading(true);
     try {
       let shippingCost = 0;
-      if (!address.localDelivery) {
+      if (!address.pickup) {
         shippingCost = (await axios.post("/api/calculate-shipping", { cart, address })).data.shippingCost;
       }
 

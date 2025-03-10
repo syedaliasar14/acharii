@@ -19,7 +19,7 @@ export interface Address {
   city: string;
   state: string;
   zip: string;
-  localDelivery?: boolean;
+  pickup?: boolean;
 }
 
 export interface AddressErrors {

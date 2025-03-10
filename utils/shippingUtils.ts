@@ -20,7 +20,15 @@ export function calculateTotalWeight(cart: CartItem[]) {
 
 export async function calculateShippingCost(cart: CartItem[], address: Address) {
   // Simulate shipping cost calculation based on address and cart weight
-  const weight = calculateTotalWeight(cart);
-  const shippingCost = 10; // Example shipping cost calculation
+  // const weight = calculateTotalWeight(cart);
+  // ... TODO
+
+  let shippingCost;
+  if (address.state.toUpperCase() === "CT") {
+    shippingCost = 5;
+  } else {
+    shippingCost = 10;
+  }
+
   return shippingCost.toFixed(2);
 }

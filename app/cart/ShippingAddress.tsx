@@ -87,12 +87,12 @@ export default function ShippingAddress({ address, setAddress, visible, addressE
             <label className="flex items-center justify-center">
               <input
                 type="checkbox"
-                name="localDelivery"
-                checked={address.localDelivery}
+                name="pickup"
+                checked={address.pickup}
                 onChange={handleCheckChange}
                 className="mr-2 size-4 accent-secondary"
               />
-              Local delivery/pickup (free)
+              Pickup (free)
             </label>
           </div>
         )}

@@ -17,7 +17,7 @@ export default function Cart() {
     city: "",
     state: "",
     zip: "",
-    localDelivery: false
+    pickup: false
   });
   const [addressErrors, setAddressErrors] = useState<AddressErrors>({
     name: false,
