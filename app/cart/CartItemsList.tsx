@@ -2,7 +2,7 @@ import Link from "next/link";
 import ProductCard from "../components/ProductCard";
 import { CartItem } from "../types";
 
-export default function CartItemsList({ cart, setCart }: { cart: CartItem[], setCart: (cart: CartItem[]) => void }) {
+export default function CartItemsList({ cart, setCart, loading }: { cart: CartItem[], setCart: (cart: CartItem[]) => void, loading: boolean }) {
   const handleDelete = (index: number) => {
     const newCart = [...cart];
     newCart.splice(index, 1);
@@ -12,7 +12,15 @@ export default function CartItemsList({ cart, setCart }: { cart: CartItem[], set
 
   return (
     <div className="flex flex-col w-full md:w-1/3 gap-8 md:h-[calc(100vh-20rem)] overflow-y-auto md:px-8 md:py-2 items-center">
-      {cart.length === 0 && (
+      {loading && (
+        <div className="flex justify-center items-center mt-20">
+          <svg className="animate-spin h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </div>
+      )}
+      
+      {!loading && cart.length === 0 && (
         <div className="flex flex-col items-center mt-4 w-full gap-4">
           <p className="text-lg opacity-70 flex flex-row gap-2">
             looks like your cart is empty
@@ -26,6 +34,7 @@ export default function CartItemsList({ cart, setCart }: { cart: CartItem[], set
           </Link>
         </div>
       )}
+
       {cart.map((item, index) => (
         <ProductCard key={index} product={item} type="cart" onClick={() => handleDelete(index)} />
       ))}
