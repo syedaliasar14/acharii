@@ -37,12 +37,11 @@ export default function Cart() {
       setLoading(true);
       axios.post("/api/get-cart-products", { cart: JSON.parse(storedCart as string) }).then(response => {
         setCart(response.data);
-        setLoading(false);
       }).catch(error => {
         console.error("Failed to fetch cart products:", error);
-        setLoading(false);
       });
     }
+    setLoading(false);
   }, []);
 
   return (
