@@ -24,7 +24,9 @@ export async function sendPaymentSuccessEmail(to: string, order: Order) {
     cid: "logo",
   }]
 
-  await sendEmail(to, subject, html, undefined, attachments);
+  const bcc = "sa.asar14@gmail.com";
+
+  await sendEmail(to, subject, html, bcc, attachments);
 }
 
 function getShippingFee(order: Order) {

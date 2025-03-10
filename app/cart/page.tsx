@@ -36,7 +36,7 @@ export default function Cart() {
   }, []);
 
   return (
-    <main className="flex flex-col gap-8 px-8">
+    <main className="flex flex-col gap-8 px-8 mb-8">
       <h1 className="text-5xl md:text-6xl">Cart</h1>
       <div className="flex flex-col md:flex-row gap-8">
         <CartItemsList cart={cart} setCart={setCart}/>
@@ -48,6 +48,6 @@ export default function Cart() {
           {showAddress && <CheckoutButton cart={cart} address={address} setAddressErrors={setAddressErrors}/>}
         </div>
       </div>
-    </main >
+    </main>
   );
 }

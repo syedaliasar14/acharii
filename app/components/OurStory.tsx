@@ -23,7 +23,7 @@ export default function OurStory() {
             What started as a family recipe, perfected over generations, soon became a passion to share the authentic taste of homemade achar with the world. Every jar of acharii is crafted with the same care and dedication, using hand-picked ingredients and traditional techniques to ensure every bite is packed with flavor and nostalgia.
           `}</p>
           <p>{`
-            From our kitchen to yours, we hope Acharii brings a taste of home, a dash of tradition, and just the right amount of spice to your table.🌶️
+            From our kitchen to yours, we hope acharii brings a taste of home, a dash of tradition, and just the right amount of spice to your table.
           `}</p>
         </div>
       </div>

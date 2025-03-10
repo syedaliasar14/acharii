@@ -48,7 +48,7 @@ export default function Products() {
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: true,
-      closeOnClick: false,
+      closeOnClick: true,
       pauseOnHover: false,
       draggable: false,
       progress: undefined,

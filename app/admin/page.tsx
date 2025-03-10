@@ -25,7 +25,7 @@ export default function Admin() {
   }, []);
 
   return (
-    <main className="flex flex-col px-8">
+    <main className="flex flex-col px-8 mb-8">
       <h1 className="text-5xl md:text-6xl">Orders</h1>
       {loading && (
         <div className="flex justify-center items-center mt-20">
@@ -34,6 +34,13 @@ export default function Admin() {
           </svg>
         </div>
       )}
+
+      {!loading && orders.length === 0 && (
+        <div className="flex justify-center items-center mt-20">
+          <p>No orders found.</p>
+        </div>
+      )}
+      
       <div className='mt-8 flex flex-col gap-4'>
         {orders.map((order) => (
           <OrderCard key={order._id} order={order} />
