@@ -32,16 +32,19 @@ export default function Cart() {
 
   // Load cart from local storage
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      setLoading(true);
-      axios.post("/api/get-cart-products", { cart: JSON.parse(storedCart as string) }).then(response => {
-        setCart(response.data);
-      }).catch(error => {
-        console.error("Failed to fetch cart products:", error);
-      });
-    }
-    setLoading(false);
+    const fetchCartProducts = async () => {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        try {
+          const response = await axios.post("/api/get-cart-products", { cart: JSON.parse(storedCart as string) });
+          setCart(response.data);
+        } catch (error) {
+          console.error("Failed to fetch cart products:", error);
+        }
+      }
+      setLoading(false);
+    };
+    fetchCartProducts();
   }, []);
 
   return (
