@@ -14,7 +14,7 @@ export default function WhatIsAchar() {
             More than just a condiment, achar is a cherished part of Pakistani cuisine, passed down through generations. It's the finishing touch to a home-cooked meal, the secret ingredient to elevate simple dishes, and a nostalgic reminder of family gatherings around the dinner table.
           `}</p>
         </div>
-        <Link href="/products" className="btn flex flex-row items-center gap-2 mt-20 !px-8 !shadow-md text-lg relative">
+        <Link href="/products" className="btn !w-max !bg-secondary flex flex-row items-center gap-2 mt-20 !px-8 !shadow-md text-lg relative">
           See Products
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
