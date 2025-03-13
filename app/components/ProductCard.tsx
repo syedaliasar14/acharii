@@ -24,8 +24,7 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
           <p className="text-lg">${product?.price?.toFixed(2)}</p>
         )}
         <button onClick={onClick}
-          className={`w-full mt-4 px-4 py-2 rounded-md cursor-pointer transition-colors shadow-sm active:scale-95 transition-transform
-            ${type === "cart" ? "bg-primary/80 hover:bg-primary text-white" : "bg-secondary/80 hover:bg-secondary"}`}>
+          className={`mt-4 btn ${type === "cart" ? "!bg-primary/80 hover:!bg-primary !text-white" : "!bg-secondary/80 hover:!bg-secondary"}`}>
           {type === "cart" ? "remove" : "+ add to cart"}
         </button>
       </div>

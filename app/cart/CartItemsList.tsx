@@ -29,7 +29,7 @@ export default function CartItemsList({ cart, setCart, loading }: { cart: CartIt
             </svg>
           </p>
           <Link href="/products"
-            className="w-full mt-4 px-4 py-2 flex justify-center rounded-md cursor-pointer transition-colors shadow-sm bg-secondary/80 hover:bg-secondary">
+            className="mt-4 btn flex justify-center">
             + add to cart
           </Link>
         </div>

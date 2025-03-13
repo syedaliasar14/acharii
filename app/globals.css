@@ -21,3 +21,7 @@ body {
 .input {
   @apply p-2 border border-stone-300 focus:outline-none focus:bg-secondary/10;
 }
+
+.btn {
+  @apply w-full px-4 py-2 rounded-md transition-all shadow-sm active:scale-95 cursor-pointer bg-secondary/80 hover:bg-secondary;
+}
