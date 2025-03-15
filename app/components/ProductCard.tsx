@@ -8,7 +8,7 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
 
   return (
     <>
-      <div className="rounded-xl shadow-md lowercase bg-white max-w-md w-full">
+      <div className="rounded-xl shadow-md bg-white max-w-md w-full">
         {product.image && (
           <div onClick={() => setShowPopup(true)} className="relative w-full h-[200px] md:h-[300px] overflow-hidden rounded-t-xl cursor-pointer">
             <Image
@@ -24,13 +24,13 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
         <div className="p-4">
           <h2 className="text-xl font-semibold">{product.name}</h2>
           {type === "cart" ? (
-            <p className="text-lg">qty: {(product as CartItem).quantity}</p>
+            <p className="text-lg text-gray-700 mt-2">qty: {(product as CartItem).quantity}</p>
           ) : (
-            <p className="text-lg">${product?.price?.toFixed(2)}</p>
+            <p className="text-lg text-gray-700 mt-2">${product?.price?.toFixed(2)}</p>
           )}
           <button onClick={onClick}
             className={`mt-4 btn ${type === "cart" ? "!bg-primary/80 hover:!bg-primary !text-white" : "!bg-secondary/80 hover:!bg-secondary"}`}>
-            {type === "cart" ? "remove" : "+ add to cart"}
+            {type === "cart" ? "Remove" : "+ Add to Cart"}
           </button>
         </div>
       </div>

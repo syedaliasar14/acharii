@@ -17,7 +17,7 @@ export default function ProductDetailsPopup({ product, onClose, onAddToCart }: P
   };
   return (
     <div onClick={handleOverlayClick} className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
-      <div onClick={(e) => e.stopPropagation()} className="bg-white rounded-xl shadow-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto relative">
+      <div onClick={(e) => e.stopPropagation()} className="bg-white rounded-xl shadow-lg max-w-3xl w-full max-h-[75vh] relative">
 
         <div className="flex flex-col md:flex-row h-full gap-6 relative">
           {/* Close Button */}
@@ -36,17 +36,17 @@ export default function ProductDetailsPopup({ product, onClose, onAddToCart }: P
           </div>
 
           {/* Product Details */}
-          <div className="flex flex-col justify-between w-full md:w-1/2 min-h-[400px] p-6 lowercase">
+          <div className="flex flex-col justify-between w-full md:w-1/2 md:h-[400px] p-6 overflow-y-auto">
             <div>
               <h2 className="text-2xl font-semibold">{product.name}</h2>
               <p className="text-lg text-gray-700 mt-2">${product.price?.toFixed(2)}</p>
-              <p className="text-gray-600 mt-4 overflow-y-auto">{product.description}</p>
+              <p className="text-gray-600 mt-4 h-[88px] md:h-[150px] overflow-y-auto">{product.description}</p>
             </div>
             <button
               onClick={onAddToCart}
               className="mt-6 btn"
             >
-              + add to cart
+              + Add to Cart
             </button>
           </div>
         </div>

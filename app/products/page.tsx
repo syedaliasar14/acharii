@@ -44,7 +44,7 @@ export default function Products() {
 
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-    toast.success(`added to cart!`, {
+    toast.success(`Added to cart!`, {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: true,
