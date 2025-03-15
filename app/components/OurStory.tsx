@@ -17,10 +17,10 @@ export default function OurStory() {
         <h1 className="mt-12 md:mt-0 md:text-7xl text-6xl font-semibold relative">Our Story</h1>
         <div className="text-md mt-8 relative flex flex-col gap-4">
           <p>{`
-            Acharii was born out of a deep love for homemade food and the traditions that come with it. Growing up in a Pakistani household, our kitchen was always filled with the rich aroma of slow-cured spices and the comforting warmth of family meals. Achar wasn't just something we ate—it was a connection to our roots, a piece of heritage lovingly prepared by our elders.
+            Acharii was born out of a deep love for homemade food and the traditions that come with it. Growing up in a Pakistani household, our kitchen was always filled with the rich aroma of slow-cured spices and the comforting warmth of family meals. Achaar wasn't just something we ate—it was a connection to our roots, a piece of heritage lovingly prepared by our elders.
           `}</p>
           <p>{`
-            What started as a family recipe, perfected over generations, soon became a passion to share the authentic taste of homemade achar with the world. Every jar of acharii is crafted with the same care and dedication, using hand-picked ingredients and traditional techniques to ensure every bite is packed with flavor and nostalgia.
+            What started as a family recipe, perfected over generations, soon became a passion to share the authentic taste of homemade achaar with the world. Every jar of acharii is crafted with the same care and dedication, using hand-picked ingredients and traditional techniques to ensure every bite is packed with flavor and nostalgia.
           `}</p>
           <p>{`
             From our kitchen to yours, we hope acharii brings a taste of home, a dash of tradition, and just the right amount of spice to your table.

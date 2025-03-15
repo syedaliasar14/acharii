@@ -8,10 +8,10 @@ export default function Hero() {
         <h1 className="md:text-6xl text-5xl font-semibold text-white relative">Homemade with Heart, <br />Spiced with Soul</h1>
         <div className="text-md text-white mt-8 relative flex flex-col gap-4">
           <p>{`
-            At acharii, we believe that every jar of achar is more than just a condiment—it's a story of tradition, warmth, and bold flavors passed down through generations. Inspired by homemade recipes from our family kitchen, our achar is crafted with hand-picked ingredients, slow-cured to perfection, and packed with love.
+            At acharii, we believe that every jar of achaar is more than just a condiment—it's a story of tradition, warmth, and bold flavors passed down through generations. Inspired by homemade recipes from our family kitchen, our achaar is crafted with hand-picked ingredients, slow-cured to perfection, and packed with love.
           `}</p>
           <p>{`
-            Whether you enjoy it with a warm roti, mix it into your rice, or savor it straight from the jar (we won't judge!), our achar brings a little nostalgia and a lot of spice to every meal.✨
+            Whether you enjoy it with a warm roti, mix it into your rice, or savor it straight from the jar (we won't judge!), our achaar brings a little nostalgia and a lot of spice to every meal.✨
           `}</p>
         </div>
         <Link href="/products" className="btn !w-max !bg-secondary flex flex-row items-center gap-2 mt-20 !px-8 !shadow-md text-lg relative">
