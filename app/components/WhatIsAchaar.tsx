@@ -13,6 +13,10 @@ export default function WhatIsAchaar() {
           <p>{`
             More than just a condiment, achaar is a cherished part of Pakistani cuisine, passed down through generations. It's the finishing touch to a home-cooked meal, the secret ingredient to elevate simple dishes, and a nostalgic reminder of family gatherings around the dinner table.
           `}</p>
+          <h3 className="mt-2 text-xl font-semibold">How to Eat Achaar</h3>
+          <p>{`
+            Achaar pairs beautifully with a variety of dishes, adding a punch of flavor to even the simplest meals. Enjoy it alongside warm, fluffy parathas or bread for a classic breakfast, mix it into plain rice with yogurt for a comforting bite, or serve it with lentils and curries to enhance their depth. It also makes a great companion to grilled meats and kebabs, offering a spicy contrast that awakens the taste buds. However you eat it, a little goes a long way—just a spoonful can elevate an entire dish.
+          `}</p>
         </div>
         <Link href="/products" className="btn !w-max !bg-secondary flex flex-row items-center gap-2 mt-20 !px-8 !shadow-md text-lg relative">
           See Products
