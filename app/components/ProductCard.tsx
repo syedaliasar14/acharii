@@ -24,7 +24,7 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
         <div className="p-4">
           <h2 className="text-xl font-semibold">{product.name}</h2>
           {type === "cart" ? (
-            <p className="text-lg text-gray-700 mt-2">qty: {(product as CartItem).quantity}</p>
+            <p className="text-lg text-gray-700 mt-2">Qty: {(product as CartItem).quantity}</p>
           ) : (
             <p className="text-lg text-gray-700 mt-2">${product?.price?.toFixed(2)}</p>
           )}
