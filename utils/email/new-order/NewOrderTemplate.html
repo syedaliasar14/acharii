@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Acharii Order</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f9;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fffbf8;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 150px;
+      margin: 0 auto;
+    }
+
+    .content {
+      color: #271f30;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .footer {
+      color: #999;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="cid:logo" alt="acharii logo" class="logo">
+    </div>
+    <div class="content">
+      <p>You got a new acharii order! ✨</p>
+      <p>
+        <strong>
+          <br>{{orders}}
+        </strong>
+      </p>
+      <p><strong><a href="https://www.achariimarket.com/admin">View all orders</a></strong></p>
+    </div>
+    <div class="footer">
+      <p>You're receiving this email because an order was placed at acharii.</p>
+      <p>&copy;
+        <script>document.write(new Date().getFullYear());</script> acharii, all rights reserved.
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>

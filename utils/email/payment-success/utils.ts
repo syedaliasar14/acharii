@@ -32,9 +32,7 @@ export async function sendPaymentSuccessEmail(to: string, order: Order) {
     cid: "logo",
   }]
 
-  const bcc = "sa.asar14@gmail.com";
-
-  await sendEmail(to, subject, html, bcc, attachments);
+  await sendEmail(to, subject, html, undefined, attachments);
 }
 
 function getShippingFee(order: Order) {

@@ -5,6 +5,7 @@ import Stripe from "stripe";
 import connectMongo from "@/lib/mongoose";
 import Order from "@/models/Order";
 import { sendPaymentSuccessEmail } from "@/utils/email/payment-success/utils";
+import { sendNewOrderEmail } from "@/utils/email/new-order/utils";
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
@@ -47,6 +48,9 @@ export async function POST(req: NextRequest) {
 
         // Send order confirmation email
         await sendPaymentSuccessEmail(customerEmail, order);
+
+        // Send new order email to acharrii managers
+        await sendNewOrderEmail(order);
 
         break;
       }
