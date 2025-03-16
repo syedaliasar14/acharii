@@ -39,7 +39,6 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
         <ProductDetailsPopup
           product={product}
           onClose={() => setShowPopup(false)}
-          onAddToCart={onClick || (() => { })}
         />
       )}
     </>
