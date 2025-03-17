@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Address, AddressErrors } from "../types";
+import PickupTooltip from "./PickupTooltip";
 
 interface ShippingAddressProps {
   address: Address;
@@ -94,6 +95,7 @@ export default function ShippingAddress({ address, setAddress, visible, addressE
               />
               Pickup (free)
             </label>
+            <PickupTooltip />
           </div>
         )}
       </form>
