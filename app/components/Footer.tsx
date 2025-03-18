@@ -13,7 +13,7 @@ export default function Footer() {
               className="flex gap-2 justify-center md:justify-start items-center"
             >
               <Image
-                src="/acharii_text.svg"
+                src="/logo.svg"
                 alt="acharii"
                 priority={true}
                 width={80}

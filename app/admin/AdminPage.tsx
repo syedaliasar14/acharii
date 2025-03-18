@@ -43,7 +43,7 @@ return (
 
     <div className='mt-8 flex flex-col gap-4'>
       {orders.map((order) => (
-        <OrderCard key={order._id} order={order} />
+        <OrderCard key={order._id} order={order} setOrder={(updatedOrder: Order) => setOrders(orders.map((o) => o._id === updatedOrder._id ? updatedOrder : o))} />
       ))}
     </div>
   </main>

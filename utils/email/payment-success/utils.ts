@@ -28,7 +28,7 @@ export async function sendPaymentSuccessEmail(to: string, order: Order) {
 
   const attachments = [{
     filename: "logo.svg",
-    path: path.join(process.cwd(), "utils/email/payment-success/logo.svg"),
+    path: path.join(process.cwd(), "public/logo.svg"),
     cid: "logo",
   }]
 

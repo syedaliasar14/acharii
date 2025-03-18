@@ -26,6 +26,7 @@ const OrderSchema = new mongoose.Schema(
     ],
     totalAmount: { type: Number, required: true },
     status: { type: String, default: "new" },
+    sentShippedEmail: { type: Boolean },
   },
   { timestamps: true }
 );

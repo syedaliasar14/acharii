@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Order } from "../types";
+import SendEmailButton from './SendEmailButton';
 
-export default function OrderCard({ order }: { order: Order }) {
+export default function OrderCard({ order, setOrder }: { order: Order, setOrder: (updatedOrder: Order) => void }) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [status, setStatus] = useState(order.status);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -12,7 +12,7 @@ export default function OrderCard({ order }: { order: Order }) {
 
   const handleStatusChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newStatus = event.target.value;
-    setStatus(newStatus);
+    setOrder({ ...order, status: newStatus });
 
     try {
       await axios.post('/api/update-order-status', { orderId: order._id, status: newStatus });
@@ -37,8 +37,8 @@ export default function OrderCard({ order }: { order: Order }) {
           </div>
         </div>
         <div className='p-4'>
-          <span className={`px-2 py-1 rounded-md ${status === 'shipped' ? 'bg-green-200' : status === 'cancelled' ? 'bg-red-200' : status === 'processing' ? 'bg-sky-200' : status === 'new' ? 'bg-amber-200' : ''}`}>
-            <select value={status} onChange={handleStatusChange} className='focus:outline-none cursor-pointer'>
+          <span className={`px-2 py-1 rounded-md ${order.status === 'shipped' ? 'bg-green-200' : order.status === 'cancelled' ? 'bg-red-200' : order.status === 'processing' ? 'bg-sky-200' : order.status === 'new' ? 'bg-amber-200' : ''}`}>
+            <select value={order.status} onChange={handleStatusChange} className='focus:outline-none cursor-pointer'>
               <option value="new">new</option>
               <option value="processing">processing</option>
               <option value="shipped">shipped</option>
@@ -50,13 +50,13 @@ export default function OrderCard({ order }: { order: Order }) {
       {isExpanded && (
         <div className='bg-stone-100 rounded-b-lg p-4 shadow flex flex-col -mt-4'>
           <div className='flex flex-col md:flex-row gap-4'>
-            <div>
+            <strong>
               {order.items.map((item, index) => (
                 <div key={index}>
                   {item.quantity}x {item.name}
                 </div>
               ))}
-            </div>
+            </strong>
             <div>
               <strong>Address:</strong>
               <div>
@@ -78,6 +78,7 @@ export default function OrderCard({ order }: { order: Order }) {
               <strong>Contact:</strong>
               <div>{order.email}</div>
               <div>{order.phone}</div>
+              {!order.address.pickup && <SendEmailButton order={order} setOrder={setOrder} />}
             </div>
             <div className='text-sm opacity-80'>
               Ordered: {new Date(order.createdAt).toLocaleDateString()}
