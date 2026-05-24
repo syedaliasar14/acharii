@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { CartItem, Product } from "../types";
 import axios from "axios";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/product-card";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

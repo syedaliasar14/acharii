@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Order } from "../types";
+import { Order } from "../../types";
 
 export default function PickupInfoPopup({ order }: { order: Order }) {
   const [showPopup, setShowPopup] = useState(false);

@@ -6,8 +6,8 @@ export async function sendEmail(to: string, subject: string, html: string, bcc?:
     port: 465, // or 587 for TLS
     secure: true, // True for port 465, false for 587
     auth: {
-      user: process.env.AWS_SES_SMTP_USER, // From AWS SES
-      pass: process.env.AWS_SES_SMTP_PASS, // From AWS SES
+      user: process.env.SES_SMTP_USER, // From AWS SES
+      pass: process.env.SES_SMTP_PASS, // From AWS SES
     },
   });
 

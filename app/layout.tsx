@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Geist, Geist_Mono, Lora } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/-header";
+import Footer from "./components/-footer";
 
 const lora = Lora({
   variable: "--font-lora",
@@ -27,20 +27,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "acharii",
+  title: "Acharii",
   description: "Authentic Pakistani flavors, handcrafted with bold spices and rich tradition.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${lora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${lora.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className="min-h-screen flex flex-col items-center">
           <Header />
           <div className="flex-grow w-full flex flex-col">{children}</div>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Order } from "../types";
+import { Order } from "../../types";
 
 export default function SendEmailButton({ order, setOrder }: { order: Order, setOrder: (updatedOrder: Order) => void }) {
   const [sendingEmail, setSendingEmail] = useState(false);

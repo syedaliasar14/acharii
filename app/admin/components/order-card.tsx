@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Order } from "../types";
-import SendEmailButton from './SendEmailButton';
-import PickupInfoPopup from './PickupInfoPopup';
+import { Order } from "../../types";
+import SendEmailButton from './send-email-button';
+import PickupInfoPopup from './pickup-info-popup';
 
 export default function OrderCard({ order, setOrder }: { order: Order, setOrder: (updatedOrder: Order) => void }) {
   const [isExpanded, setIsExpanded] = useState(false);

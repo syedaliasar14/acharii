@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { CartItem, Product } from "../types";
 import { useState } from "react";
-import ProductDetailsPopup from "./ProductDetailsPopup";
+import ProductDetailsPopup from "./product-details-popup";
 
 export default function ProductCard({ product, type, onClick }: { product: Product | CartItem; type: "product" | "cart"; onClick?: () => void }) {
   const [showPopup, setShowPopup] = useState(false);

@@ -3,7 +3,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Order } from "../types";
-import OrderCard from "./OrderCard";
+import OrderCard from "./components/order-card";
 
 export default function AdminPage() {
   const [orders, setOrders] = useState<Order[]>([]);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Address, AddressErrors } from "../types";
-import PickupTooltip from "./PickupTooltip";
+import { Address, AddressErrors } from "../../types";
+import PickupTooltip from "./pickup-tooltip";
 
 interface ShippingAddressProps {
   address: Address;

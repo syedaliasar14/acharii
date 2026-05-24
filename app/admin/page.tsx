@@ -1,5 +1,5 @@
-import PasswordForm from './LoginForm';
-import AdminPage from './AdminPage';
+import PasswordForm from './components/login-form';
+import AdminPage from './admin-page';
 import { cookies } from 'next/headers';
 
 export default async function Admin() {

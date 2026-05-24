@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Address, AddressErrors, CartItem } from "../types";
+import { Address, AddressErrors, CartItem } from "../../types";
 import axios from "axios";
 
 export default function CheckoutButton({ cart, address, setAddressErrors }: { cart: CartItem[], address: Address, setAddressErrors: (errors: AddressErrors) => void }) {

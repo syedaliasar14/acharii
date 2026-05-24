@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { Address, AddressErrors, CartItem } from "../types";
-import CartItemsList from "./CartItemsList";
-import SubtotalCard from "./SubtotalCard";
-import CheckoutButton from "./CheckoutButton";
-import ShippingAddress from "./ShippingAddress";
+import CartItemsList from "./components/cart-items-list";
+import SubtotalCard from "./components/subtotal-card";
+import CheckoutButton from "./components/checkout-button";
+import ShippingAddress from "./components/shipping-address";
 import axios from "axios";
 
 export default function Cart() {

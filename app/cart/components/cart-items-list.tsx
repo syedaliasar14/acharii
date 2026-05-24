@@ -1,6 +1,6 @@
 import Link from "next/link";
-import ProductCard from "../components/ProductCard";
-import { CartItem } from "../types";
+import ProductCard from "../../components/product-card";
+import { CartItem } from "../../types";
 
 export default function CartItemsList({ cart, setCart, loading }: { cart: CartItem[], setCart: (cart: CartItem[]) => void, loading: boolean }) {
   const handleDelete = (index: number) => {

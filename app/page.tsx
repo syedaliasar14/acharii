@@ -1,8 +1,8 @@
 "use client";
 
-import Hero from "./components/Hero";
-import OurStory from "./components/OurStory";
-import WhatIsAchaar from "./components/WhatIsAchaar";
+import Hero from "./home/hero-section";
+import OurStory from "./home/our-story-section";
+import WhatIsAchaar from "./home/what-is-achaar-section";
 
 export default function Home() {
   return (
