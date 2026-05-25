@@ -15,7 +15,7 @@ export default function FinalCtaSection() {
           </div>
           <div className="relative flex flex-col items-center gap-6 w-full">
             <Image
-              src="/cta-image.jpg"
+              src="/cta-image.JPG"
               alt="A collection of achaar jars with vibrant colors and rich textures, showcasing the bold flavors of acharii products."
               width={400} height={400}
               className="w-full object-cover h-[200px]"
