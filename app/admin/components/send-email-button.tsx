@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Order } from "../../types";
+import { LoaderCircle } from "lucide-react";
 
 export default function SendEmailButton({ order, setOrder }: { order: Order, setOrder: (updatedOrder: Order) => void }) {
   const [sendingEmail, setSendingEmail] = useState(false);
@@ -28,7 +29,7 @@ export default function SendEmailButton({ order, setOrder }: { order: Order, set
   return (
     <>
       <button onClick={() => setShowPopup(true)}
-        className={`btn text-sm mt-2 flex justify-center items-center ${order.sentShippedEmail && '!bg-gray-200 !cursor-default'}`}
+        className={`btn text-sm mt-2 flex justify-center items-center ${order.sentShippedEmail && 'cursor-default'}`}
         disabled={sendingEmail || order.sentShippedEmail}
       >
         {order.sentShippedEmail ? 'Sent Shipped Email' : 'Send Shipped Email'}
@@ -40,7 +41,7 @@ export default function SendEmailButton({ order, setOrder }: { order: Order, set
           onClick={handleOverlayClick}
         >
           <div
-            className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full relative mx-4"
+            className="bg-white shadow-lg p-6 max-w-md w-full relative mx-4"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -56,9 +57,7 @@ export default function SendEmailButton({ order, setOrder }: { order: Order, set
             <div className="flex justify-end space-x-4">
               <button onClick={sendOrderShippedEmail} className="btn text-sm mt-2 flex justify-center items-center" disabled={sendingEmail}>
                 {sendingEmail ? (
-                  <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                  <LoaderCircle className="animate-spin h-5 w-5" />
                 ) : 'Send Email'}
               </button>
             </div>

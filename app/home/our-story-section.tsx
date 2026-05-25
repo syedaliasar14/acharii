@@ -5,7 +5,7 @@ export default function OurStory() {
     <section id="our-story" className="site-shell grid gap-10 py-18 md:grid-cols-[0.92fr_1.08fr] md:gap-16 md:py-24">
       <div className="relative min-h-[420px] overflow-hidden border border-primary/10 md:min-h-[560px]">
         <Image
-          src="/ourstory.jpg"
+          src="/our-story.jpg"
           alt="The Acharii story rooted in home cooking and tradition"
           fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover"

@@ -1,3 +1,4 @@
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 export default function WhatIsAchaar() {
@@ -16,9 +17,7 @@ export default function WhatIsAchaar() {
         </div>
         <Link href="/products" className="btn mt-8 w-full sm:w-auto sm:px-8">
           Explore the Jars
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-          </svg>
+          <ChevronRight className="size-4" />
         </Link>
       </div>
 

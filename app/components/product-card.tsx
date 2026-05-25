@@ -8,40 +8,13 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
 
   return (
     <>
-      {/* <div className="rounded-xl shadow-md bg-white max-w-md w-full">
-        {product.image && (
-          <div onClick={() => setShowPopup(true)} className="relative w-full h-[200px] md:h-[300px] overflow-hidden rounded-t-xl cursor-pointer">
-            <Image
-              src={product.image}
-              alt={product.name}
-              objectFit="cover"
-              width={500}
-              height={500}
-              className="w-full translate-y-[-40%] absolute top-1/2"
-            />
-          </div>
-        )}
-        <div className="p-4">
-          <h2 className="text-xl font-semibold">{product.name}</h2>
-          {type === "cart" ? (
-            <p className="text-lg text-gray-700 mt-2">Qty: {(product as CartItem).quantity}</p>
-          ) : (
-            <p className="text-lg text-gray-700 mt-2">${product?.price?.toFixed(2)}</p>
-          )}
-          <button onClick={onClick}
-            className={`mt-4 btn ${type === "cart" ? "!bg-primary/80 hover:!bg-primary !text-white" : "!bg-secondary/80 hover:!bg-secondary"}`}>
-            {type === "cart" ? "Remove" : "+ Add to Cart"}
-          </button>
-        </div>
-      </div> */}
-
       <article key={product.id} className="surface-card overflow-hidden flex-shrink-0">
-        <div className="relative h-[280px] overflow-hidden bg-accent cursor-pointer" onClick={() => setShowPopup(true)}>
+        <div className={`relative overflow-hidden bg-foreground/5 cursor-pointer ${type === "cart" ? "h-[100px]" : "h-[280px]"}`} onClick={() => setShowPopup(true)}>
           {product.image ? (
             <Image src={product.image} alt={product.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover" />
           ) : (
             <div className="flex h-full items-center justify-center text-sm uppercase tracking-[0.24em] text-foreground/45">
-              Product image
+              {product.name}
             </div>
           )}
         </div>
@@ -61,7 +34,7 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
             <p className="section-copy mt-5 line-clamp-3 min-h-[84px]">{product.description || "Rich spice, balanced acidity, and a finish that lifts the whole meal."}</p>
           )}
           <button onClick={onClick} className="btn mt-6 w-full">
-            {type === "cart" ? "Remove" : "+ Add to Cart"}
+            {type === "cart" ? "Remove" : "Add to Cart"}
           </button>
         </div>
       </article>

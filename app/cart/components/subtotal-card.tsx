@@ -12,8 +12,8 @@ export default function SubtotalCard({ cart }: { cart: CartItem[] }) {
         ))}
       </div>
       <div className="flex justify-end gap-4 self-stretch items-center mt-4 p-2">
-        <h2 className="text-lg font-semibold self-end">Subtotal</h2>
-        <p className="text-2xl font-semibold">${cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</p>
+        <span className="text-lg font-semibold self-end">Subtotal</span>
+        <span className="text-2xl font-semibold">${cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</span>
       </div>
     </div>
   )

@@ -30,7 +30,7 @@ export default function ShippingAddress({ address, setAddress, visible, addressE
 
   return (
     <div className={`w-full transition-height duration-1500 ease-out overflow-hidden ${isVisible ? 'max-h-full' : 'max-h-0'}`}>
-      <h2 className="text-2xl mb-4">Shipping Address</h2>
+      <p className="text-2xl mb-4">Shipping Address</p>
       <form className="flex flex-col">
         <input
           type="text"

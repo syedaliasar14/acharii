@@ -36,7 +36,7 @@ export default function FeaturedProductsSection() {
     <section className="site-shell py-18 md:py-24">
       <div className="mb-32 flex items-center justify-between w-full gap-2 overflow-x-auto pb-2 md:gap-8 lg:gap-12">
         {sectionIcons.map((icon) => (
-          <div key={icon.src} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full sm:h-18 sm:w-18">
+          <div key={icon.src} className="flex h-12 w-12 shrink-0 items-center justify-center sm:h-18 sm:w-18">
             <Image src={icon.src} alt={icon.alt} width={34} height={34} className="h-8 w-8 object-contain sm:h-9 sm:w-9 opacity-70" />
           </div>
         ))}

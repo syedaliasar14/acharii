@@ -48,8 +48,8 @@ export default function Cart() {
   }, []);
 
   return (
-    <main className="flex flex-col gap-8 mb-8 site-shell">
-      <h1 className="text-5xl md:text-6xl">Cart</h1>
+    <main className="flex flex-col gap-4 mt-18 mb-8 site-shell">
+      <h1 className="!font-sans mt-4 text-5xl md:text-6xl">Cart</h1>
       <div className="flex flex-col md:flex-row gap-8">
         <CartItemsList cart={cart} setCart={setCart} loading={loading} />
 
