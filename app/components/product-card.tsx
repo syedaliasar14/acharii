@@ -8,7 +8,7 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
 
   return (
     <>
-      <div className="rounded-xl shadow-md bg-white max-w-md w-full">
+      {/* <div className="rounded-xl shadow-md bg-white max-w-md w-full">
         {product.image && (
           <div onClick={() => setShowPopup(true)} className="relative w-full h-[200px] md:h-[300px] overflow-hidden rounded-t-xl cursor-pointer">
             <Image
@@ -33,7 +33,38 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
             {type === "cart" ? "Remove" : "+ Add to Cart"}
           </button>
         </div>
-      </div>
+      </div> */}
+
+      <article key={product.id} className="surface-card overflow-hidden flex-shrink-0">
+        <div className="relative h-[280px] overflow-hidden bg-accent cursor-pointer" onClick={() => setShowPopup(true)}>
+          {product.image ? (
+            <Image src={product.image} alt={product.name} fill className="object-cover" />
+          ) : (
+            <div className="flex h-full items-center justify-center text-sm uppercase tracking-[0.24em] text-foreground/45">
+              Product image
+            </div>
+          )}
+        </div>
+        <div className="p-6">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="font-serif text-3xl leading-none text-foreground">{product.name}</p>
+              <p className="mt-3 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-foreground/50">{product.size || "Small-batch jar"}</p>
+            </div>
+            {type === "cart" ? (
+              <p className="text-lg font-semibold text-secondary flex-shrink-0">Qty: {(product as CartItem).quantity}</p>
+            ) : (
+            <p className="text-lg font-semibold text-secondary">${product.price.toFixed(2)}</p>
+            )}
+          </div>
+          {type === "product" && (
+            <p className="section-copy mt-5 line-clamp-3 min-h-[84px]">{product.description || "Rich spice, balanced acidity, and a finish that lifts the whole meal."}</p>
+          )}
+          <button onClick={onClick} className="btn mt-6 w-full">
+            {type === "cart" ? "Remove" : "+ Add to Cart"}
+          </button>
+        </div>
+      </article>
 
       {showPopup && (
         <ProductDetailsPopup

@@ -14,9 +14,10 @@ export default function ProductDetailsPopup({ product, onClose }: ProductDetails
       onClose();
     }
   };
+
   return (
     <div onClick={handleOverlayClick} className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
-      <div onClick={(e) => e.stopPropagation()} className="bg-white rounded-xl shadow-lg max-w-3xl w-full max-h-[75vh] relative overflow-y-auto">
+      <div onClick={(e) => e.stopPropagation()} className="bg-white shadow-lg max-w-3xl w-full max-h-[75vh] relative overflow-y-auto">
 
         <div className="flex flex-col md:flex-row h-full gap-3 md:gap-6 relative">
           {/* Close Button */}
@@ -29,16 +30,16 @@ export default function ProductDetailsPopup({ product, onClose }: ProductDetails
               src={product.image}
               alt={product.name}
               objectFit="cover"
-              layout="fill"
-              className="rounded-t-xl md:rounded-l-xl md:rounded-r-none"
+              fill sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
 
           {/* Product Details */}
           <div className="flex flex-col w-full md:w-1/2 md:h-[400px] p-6 overflow-y-auto">
-            <h2 className="text-2xl font-semibold">{product.name}</h2>
-            <p className="text-lg text-gray-700 mt-2">${product.price?.toFixed(2)}</p>
-            <p className="text-gray-600 mt-4">{product.description}</p>
+            <h2 className="text-3xl leading-none text-foreground">{product.name}</h2>
+            <p className="mt-3 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-foreground/50">{product.size || "Small-batch jar"}</p>
+            <p className="text-lg font-semibold text-secondary mt-2 text-right">${product.price?.toFixed(2)}</p>
+            <p className="section-copy mt-5">{product.description}</p>
           </div>
         </div>
       </div>

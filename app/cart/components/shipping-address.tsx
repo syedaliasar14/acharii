@@ -38,7 +38,7 @@ export default function ShippingAddress({ address, setAddress, visible, addressE
           value={address.name}
           onChange={handleChange}
           placeholder="name"
-          className={`input ${addressErrors.name && 'bg-primary/20'} rounded-t-lg`}
+          className={`input ${addressErrors.name && 'bg-primary/20'}`}
         />
         <input
           type="text"
@@ -72,7 +72,7 @@ export default function ShippingAddress({ address, setAddress, visible, addressE
             value={address.state}
             onChange={handleChange}
             placeholder="state"
-            className={`input ${addressErrors.state && 'bg-primary/20'} w-1/2 rounded-bl-lg`}
+            className={`input ${addressErrors.state && 'bg-primary/20'} w-1/2`}
           />
           <input
             type="text"
@@ -80,11 +80,12 @@ export default function ShippingAddress({ address, setAddress, visible, addressE
             value={address.zip}
             onChange={handleChange}
             placeholder="zip"
-            className={`input ${addressErrors.zip && 'bg-primary/20'} w-1/2 rounded-br-lg`}
+            className={`input ${addressErrors.zip && 'bg-primary/20'} w-1/2`}
           />
         </div>
+
         {address.state.toUpperCase() === 'CT' && (
-          <div className="mt-4 flex flex-row items-center rounded-md border-2 border-secondary/60 p-2 gap-3 bg-secondary/10">
+          <div className="mt-4 flex flex-row items-center border-1 border-secondary/60 px-3 py-2 gap-2 bg-secondary/10">
             <label className="flex items-center justify-center">
               <input
                 type="checkbox"

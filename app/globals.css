@@ -1,27 +1,71 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-cormorant);
   --font-mono: var(--font-geist-mono);
-  --color-primary: #e7573c;
-  --color-secondary: #ff9e00;
+  --color-foreground: #181411;
+  --color-muted: #6d6258;
+  --color-background: #ffffff;
+  --color-primary: #99281f;
+  --color-secondary: #fbaa19;
+  --color-accent: #f5ede4;
 }
 
 :root {
-  --background: #fffbf8;
-  --foreground: #271f30;
+  --background: #ffffff;
+  --foreground: #181411;
+  --muted: #6d6258;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Lora, Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.site-shell {
+  @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12;
+}
+
+.eyebrow {
+  @apply text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-secondary;
+}
+
+.section-title {
+  @apply font-serif text-5xl leading-none md:text-6xl;
+}
+
+.section-copy {
+  @apply text-sm leading-7 text-muted md:text-base;
+}
+
+.surface-card {
+  @apply bg-white shadow-xl border border-primary/10;
 }
 
 .input {
-  @apply p-2 border border-stone-300 focus:outline-none focus:bg-secondary/10;
+  @apply p-3 border border-foreground/15 focus:outline-none focus:border-secondary/60 focus:bg-secondary/5;
 }
 
 .btn {
-  @apply w-full px-4 py-2 rounded-md transition-all shadow-sm active:scale-95 cursor-pointer bg-secondary/80 hover:bg-secondary disabled:!scale-100;
+  @apply inline-flex w-full cursor-pointer items-center justify-center gap-2 border border-primary bg-primary px-5 py-3 text-center text-xs font-semibold uppercase tracking-[0.24em] text-white transition-all duration-300 hover:bg-white hover:text-primary active:scale-95 disabled:!scale-100 disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.btn-secondary {
+  @apply inline-flex w-full cursor-pointer items-center justify-center gap-2 border border-foreground/15 bg-white text-foreground hover:bg-foreground px-5 py-3 text-center text-xs font-semibold uppercase tracking-[0.24em] transition-all duration-300 hover:text-white active:scale-95 disabled:!scale-100 disabled:cursor-not-allowed disabled:opacity-60;
 }

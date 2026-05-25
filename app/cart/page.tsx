@@ -48,12 +48,12 @@ export default function Cart() {
   }, []);
 
   return (
-    <main className="flex flex-col gap-8 px-8 mb-8">
+    <main className="flex flex-col gap-8 mb-8 site-shell">
       <h1 className="text-5xl md:text-6xl">Cart</h1>
       <div className="flex flex-col md:flex-row gap-8">
         <CartItemsList cart={cart} setCart={setCart} loading={loading} />
 
-        <div className="w-full md:w-2/3 flex flex-col gap-8 items-stretch items-center self-stretch md:px-20 max-w-5xl">
+        <div className="w-full md:w-2/3 flex flex-col gap-8 items-stretch items-center self-stretch max-w-5xl">
           <SubtotalCard cart={cart} />
           {!showAddress && <button onClick={() => setShowAddress(true)} className="mt-4 btn">Checkout</button>}
           <ShippingAddress address={address} setAddress={setAddress} visible={showAddress} addressErrors={addressErrors} setAddressErrors={setAddressErrors} />

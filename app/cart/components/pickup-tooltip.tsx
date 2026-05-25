@@ -20,7 +20,7 @@ export default function PickupTooltip() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
           onClick={handleOverlayClick}
         >
-          <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full relative mx-4"
+          <div className="bg-white shadow-lg p-6 max-w-md w-full relative mx-4"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -31,7 +31,7 @@ export default function PickupTooltip() {
             </button>
 
             {/* Popup Content */}
-            <h2 className="text-lg font-semibold mb-4">Pickup Information</h2>
+            <h2 className="text-2xl font-semibold mb-4">Pickup Information</h2>
             <p className="text-gray-700">
               Choose this option if you can pick up your order in Newington, CT. We will contact you to arrange a convenient date and time. No shipping fees will apply.
             </p>

@@ -1,0 +1,40 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+export default function Footer() {
+  return (
+    <footer className="w-full border-t border-primary/10 bg-primary text-white">
+      <div className="site-shell py-20">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <div className="flex max-w-sm flex-col text-center self-center md:text-left md:self-start">
+            <Link href="/#" aria-current="page" className="flex flex-col items-center md:items-start gap-3 self-center md:self-start">
+              <Image
+                src="/logo.svg"
+                alt="acharii"
+                priority={true}
+                width={150}
+                height={100}
+              />
+              <span className="mt-2 text-[0.7rem] uppercase tracking-[0.32em]">Homemade with heart,<br />spiced with soul.</span>
+            </Link>
+          </div>
+
+          <div className="flex flex-col items-center gap-4 text-center md:items-end md:text-right">
+            <Link href="https://www.instagram.com/_acharii_/" target="_blank" className="text-xs fill-secondary flex items-center gap-2 opacity-70 inline-flex">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-secondary">Follow the kitchen</p>
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 48 48">
+                <path d="M 16.5 5 C 10.16639 5 5 10.16639 5 16.5 L 5 31.5 C 5 37.832757 10.166209 43 16.5 43 L 31.5 43 C 37.832938 43 43 37.832938 43 31.5 L 43 16.5 C 43 10.166209 37.832757 5 31.5 5 L 16.5 5 z M 16.5 8 L 31.5 8 C 36.211243 8 40 11.787791 40 16.5 L 40 31.5 C 40 36.211062 36.211062 40 31.5 40 L 16.5 40 C 11.787791 40 8 36.211243 8 31.5 L 8 16.5 C 8 11.78761 11.78761 8 16.5 8 z M 34 12 C 32.895 12 32 12.895 32 14 C 32 15.105 32.895 16 34 16 C 35.105 16 36 15.105 36 14 C 36 12.895 35.105 12 34 12 z M 24 14 C 18.495178 14 14 18.495178 14 24 C 14 29.504822 18.495178 34 24 34 C 29.504822 34 34 29.504822 34 24 C 34 18.495178 29.504822 14 24 14 z M 24 17 C 27.883178 17 31 20.116822 31 24 C 31 27.883178 27.883178 31 24 31 C 20.116822 31 17 27.883178 17 24 C 17 20.116822 20.116822 17 24 17 z"></path>
+              </svg>
+            </Link>
+            <p className="max-w-xs text-sm leading-7 opacity-70">
+              Follow us for serving ideas, new batch drops, and updates from the acharii kitchen.
+            </p>
+          </div>
+        </div>
+        <p className="text-xs text-center mt-10 -mb-10 opacity-70">
+          Copyright © {new Date().getFullYear()} - All rights reserved
+        </p>
+      </div>
+    </footer>
+  );
+}
