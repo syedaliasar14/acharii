@@ -10,7 +10,7 @@ export default function Footer() {
             <Link href="/#" aria-current="page" className="flex flex-col items-center md:items-start gap-3 self-center md:self-start">
               <Image
                 src="/logo.svg"
-                alt="acharii"
+                alt="Acharii Logo"
                 priority={true}
                 width={150}
                 height={100}

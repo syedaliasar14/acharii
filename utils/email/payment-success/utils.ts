@@ -1,11 +1,11 @@
 import path from "path";
 import fs from "fs";
-import { sendEmail } from "../sendEmail";
+import { sendEmail } from "../send-email";
 import { Order } from "@/app/types";
 
 export async function sendPaymentSuccessEmail(to: string, order: Order) {
   const subject = "Acharii Order Confirmation";
-  const templatePath = path.join(process.cwd(), "utils/email/payment-success/PaymentSuccessTemplate.html");
+  const templatePath = path.join(process.cwd(), "utils/email/payment-success/template.html");
   let html = fs.readFileSync(templatePath, "utf-8");
   const address = order.address;
 

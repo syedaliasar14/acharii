@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
+import { getEnvOrSsm } from "../utils/ssm";
 
 const connectMongo = async () => {
-  if (!process.env.MONGODB_URI) {
-    throw new Error("Add the MONGODB_URI environment variable to use mongoose");
-  }
+  const mongoUri = await getEnvOrSsm("MONGODB_URI", {
+    parameterName: "/acharii/MONGODB_URI",
+  });
   return mongoose
-    .connect(process.env.MONGODB_URI)
+    .connect(mongoUri)
     .catch((e) => console.error("Mongoose Client Error: " + e.message));
 };
 

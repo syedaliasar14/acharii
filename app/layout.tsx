@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Acharii",
-  description: "A refined achaar brand bringing handcrafted Pakistani pickles to the table with a premium, gift-worthy feel.",
+  description: "A refined achaar brand bringing handcrafted Pakistani pickles to the table with a premium, yet authentic feel. Homemade with heart, spiced with soul.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

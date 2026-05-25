@@ -1,11 +1,11 @@
 import path from "path";
 import fs from "fs";
-import { sendEmail } from "../sendEmail";
+import { sendEmail } from "../send-email";
 import { Order } from "@/app/types";
 
 export async function sendOrderShippedEmail(to: string, order: Order) {
   const subject = "Acharii Order Shipped";
-  const templatePath = path.join(process.cwd(), "utils/email/order-shipped/Order-Shipped.html");
+  const templatePath = path.join(process.cwd(), "utils/email/order-shipped/template.html");
   let html = fs.readFileSync(templatePath, "utf-8");
   const address = order.address;
 
