@@ -38,7 +38,7 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
       <article key={product.id} className="surface-card overflow-hidden flex-shrink-0">
         <div className="relative h-[280px] overflow-hidden bg-accent cursor-pointer" onClick={() => setShowPopup(true)}>
           {product.image ? (
-            <Image src={product.image} alt={product.name} fill className="object-cover" />
+            <Image src={product.image} alt={product.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover" />
           ) : (
             <div className="flex h-full items-center justify-center text-sm uppercase tracking-[0.24em] text-foreground/45">
               Product image

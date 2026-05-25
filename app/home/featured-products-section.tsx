@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import axios from "axios";
-import { Product } from "../types";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 const sectionIcons = [
   { src: "/icons/garlic.svg", alt: "Garlic icon" },
@@ -14,17 +14,24 @@ const sectionIcons = [
   { src: "/icons/mango.svg", alt: "Mango icon" },
 ];
 
+const productImages = [
+  "/products/IMG_4324.jpeg",
+  "/products/IMG_5610.jpeg",
+  "/products/IMG_5853.jpeg",
+  "/products/IMG_5902.jpeg",
+  "/products/IMG_5976.jpeg",
+  "/products/IMG_6755.jpeg",
+  "/products/IMG_6844.jpeg",
+  "/products/IMG_6854.jpeg",
+  "/products/IMG_7853.JPG",
+  "/products/IMG_7854.JPG",
+  "/products/IMG_7855.JPG",
+  "/products/IMG_7856.JPG",
+  "/products/IMG_7857.JPG",
+  "/products/IMG_7860.JPG",
+];
+
 export default function FeaturedProductsSection() {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    axios.post("/api/get-products").then((response) => {
-      setProducts(response.data.slice(0, 3));
-    }).catch(() => {
-      setProducts([]);
-    });
-  }, []);
-
   return (
     <section className="site-shell py-18 md:py-24">
       <div className="mb-32 flex items-center justify-between w-full gap-2 overflow-x-auto pb-2 md:gap-8 lg:gap-12">
@@ -47,62 +54,54 @@ export default function FeaturedProductsSection() {
         </Link>
       </div>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {products.length > 0 ? (
-          products.map((product) => (
-            <article key={product.id} className="surface-card overflow-hidden">
-              <div className="relative h-[280px] overflow-hidden bg-accent">
-                {product.image ? (
-                  <Image src={product.image} alt={product.name} fill className="object-cover" />
-                ) : (
-                  <div className="flex h-full items-center justify-center text-sm uppercase tracking-[0.24em] text-foreground/45">
-                    Product image
-                  </div>
-                )}
-              </div>
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="font-serif text-3xl leading-none text-foreground">{product.name}</p>
-                    <p className="mt-3 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-foreground/50">{product.size || "Small-batch jar"}</p>
-                  </div>
-                  <p className="text-lg font-semibold text-secondary">${product.price.toFixed(2)}</p>
-                </div>
-                <p className="section-copy mt-5 line-clamp-3 min-h-[84px]">{product.description || "Rich spice, balanced acidity, and a finish that lifts the whole meal."}</p>
-                <Link href="/products" className="btn mt-6 w-full">
-                  Buy This Style
-                </Link>
-              </div>
-            </article>
-          ))
-        ) : (
-          [
-            {
-              title: "Classic house jar",
-              note: "A balanced everyday achaar with comforting flavor and a vibrant finish.",
+      <div className="mt-12 -mx-6 sm:-mx-10 lg:-mx-12">
+        <Swiper
+          modules={[Autoplay]}
+          slidesPerView={1.4}
+          spaceBetween={12}
+          centeredSlides
+          breakpoints={{
+            640: {
+              slidesPerView: 1.6,
+              spaceBetween: 16,
             },
-            {
-              title: "Citrus-forward option",
-              note: "Bright and tangy notes that pair beautifully with rice, paratha, and grilled foods.",
+            768: {
+              slidesPerView: 2.1,
+              spaceBetween: 18,
+              centeredSlides: false,
             },
-            {
-              title: "Gift-ready favorite",
-              note: "A bold, crowd-pleasing jar perfect for sharing with family and friends.",
+            1024: {
+              slidesPerView: 2.8,
+              spaceBetween: 22,
+              centeredSlides: false,
             },
-          ].map((item) => (
-            <article key={item.title} className="surface-card flex min-h-[380px] flex-col justify-between p-6 md:p-8">
-              <div>
-                <p className="eyebrow">Featured jar</p>
-                <p className="mt-5 font-serif text-4xl leading-none text-foreground">{item.title}</p>
-                <p className="section-copy mt-5">{item.note}</p>
+            1280: {
+              slidesPerView: 3.5,
+              spaceBetween: 24,
+              centeredSlides: false,
+            },
+          }}
+          loop
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false
+          }}
+        >
+          {productImages.map((imageSrc) => (
+            <SwiperSlide key={imageSrc}>
+              <div className="relative h-[420px]">
+                <Image
+                  src={imageSrc}
+                  alt="Featured achaar product"
+                  fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 80vw"
+                  className="object-cover"
+                />
               </div>
-              <Link href="/products" className="btn mt-8 w-full">
-                Shop the Collection
-              </Link>
-            </article>
-          ))
-        )}
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
+
     </section>
   );
 }

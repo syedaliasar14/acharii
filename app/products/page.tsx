@@ -56,7 +56,7 @@ export default function Products() {
   };
 
   return (
-    <main className="flex flex-col gap-8 px-8 mb-12">
+    <main className="site-shell flex flex-col gap-8 px-8 mb-12">
       <h2 className="text-5xl md:text-6xl">Products</h2>
       {loading && (
         <div className="flex justify-center items-center mt-20">
