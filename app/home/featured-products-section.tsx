@@ -44,7 +44,7 @@ export default function FeaturedProductsSection() {
 
       <div className="max-w-2xl flex flex-col text-balance ">
         <p className="eyebrow">Our collection</p>
-        <h2 className="section-title mt-5 text-foreground">Shop customer-favorite achaar jars.</h2>
+        <h2 className="section-title mt-5 text-foreground">Shop all your favorite achaar flavors.</h2>
         <p className="section-copy mt-5 max-w-xl">
           Explore our bestselling picks and find the right level of tang, spice, and depth for your table.
         </p>
