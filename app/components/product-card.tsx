@@ -22,7 +22,7 @@ export default function ProductCard({ product, type, onClick }: { product: Produ
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="font-serif text-3xl leading-none text-foreground">{product.name}</p>
-              <p className="mt-3 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-foreground/50">{product.size || "Small-batch jar"}</p>
+              <p className="mt-3 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-foreground/50">{product.size}</p>
             </div>
             {type === "cart" ? (
               <p className="text-lg font-semibold text-secondary flex-shrink-0">Qty: {(product as CartItem).quantity}</p>
